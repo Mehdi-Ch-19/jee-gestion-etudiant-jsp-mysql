@@ -89,8 +89,7 @@ public class UserServlet extends HttpServlet {
     }
 
         private void deleteEtudiant(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("etudiant-form.jsp");
-            requestDispatcher.forward(request,response);
+
             int id = Integer.parseInt(request.getParameter("id"));
             etudiantDao.deleteEtudiant(id);
             response.sendRedirect("list");
@@ -103,12 +102,11 @@ public class UserServlet extends HttpServlet {
             dispatcher.forward(request, response);
         }
     private void updateEtudiant(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException, SQLException {
-        int id = Integer.parseInt(request.getParameter("id"));
-
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         double note = Double.parseDouble(request.getParameter("note"));
-        Etudiant etudiant = new Etudiant(name,email,note);
+        int id = Integer.parseInt(request.getParameter("id"));
+        Etudiant etudiant = new Etudiant(id,name,email,note);
         etudiantDao.updateRtudiant(etudiant);
         response.sendRedirect("list");
 

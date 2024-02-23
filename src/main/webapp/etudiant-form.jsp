@@ -17,7 +17,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: tomato">
         <div>
-            <a href="https://www.javaguides.net" class="navbar-brand"> User Management App </a>
+            <a href="https://www.javaguides.net" class="navbar-brand"> Etudiant Management App </a>
         </div>
 
         <ul class="navbar-nav">
@@ -52,15 +52,15 @@
                     </c:if>
 
                     <fieldset class="form-group">
-                        <label>User Name</label> <input type="text" value="<c:out value='${etudiant.name}' />" class="form-control" name="name" required="required">
+                        <label>Etudiant Name</label> <input type="text" value="<c:out value='${etudiant.name}' />" class="form-control" name="name" required="required">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label>User Email</label> <input type="text" value="<c:out value='${etudiant.email}' />" class="form-control" name="email">
+                        <label>Etudiant Email</label> <input type="text" value="<c:out value='${etudiant.email}' />" class="form-control" name="email">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label>User Country</label> <input type="text" value="<c:out value='${etudiant.note}' />" class="form-control" name="note">
+                        <label>Etudiant Note</label> <input type="text" value="<c:out value='${etudiant.note}' />" class="form-control" name="note">
                     </fieldset>
 
                     <button type="submit" class="btn btn-success">Save</button>

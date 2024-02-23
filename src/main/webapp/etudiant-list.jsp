@@ -21,7 +21,7 @@
         </div>
 
         <ul class="navbar-nav">
-            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Users</a></li>
+            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Etudiants</a></li>
         </ul>
     </nav>
 </header>
@@ -35,7 +35,7 @@
         <hr>
         <div class="container text-left">
 
-            <a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add New User</a>
+            <a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add New Etudiants</a>
         </div>
         <br>
         <table class="table table-bordered">
