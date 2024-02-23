@@ -13,10 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "etudiantservlet", value = "/etudiant-servlet")
-
+@WebServlet( "/etudiant")
 public class UserServlet extends HttpServlet {
-    String destination = "user.jsp";
     private EtudiantDao etudiantDao;
 
         public UserServlet() {
