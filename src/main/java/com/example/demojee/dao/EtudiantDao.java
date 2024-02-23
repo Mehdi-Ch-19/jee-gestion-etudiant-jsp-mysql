@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EtudiantDao {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/etudaint?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/etudiant?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "chiheb2002";
     private static final String INSERT_USERS_SQL = "INSERT INTO etudiant" + "  (name, email, note) VALUES " +
@@ -21,7 +21,7 @@ public class EtudiantDao {
     protected Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (SQLException | ClassNotFoundException e) {
             // TODO Auto-generated catch block
@@ -48,9 +48,9 @@ public class EtudiantDao {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)
         ){
-            preparedStatement.setString(2,e.getName());
-            preparedStatement.setString(3,e.getEmail());
-            preparedStatement.setDouble(4,e.getNote());
+            preparedStatement.setString(1,e.getName());
+            preparedStatement.setString(2,e.getEmail());
+            preparedStatement.setDouble(3,e.getNote());
             preparedStatement.executeUpdate();
         }catch (SQLException exception){
             printSQLException(exception);

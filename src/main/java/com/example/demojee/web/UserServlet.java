@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "etudiantservlet", value = "/etudiant-servlet")
+@WebServlet(name = "etudiantservlet", value = "/")
 
 public class UserServlet extends HttpServlet {
     String destination = "user.jsp";
@@ -26,6 +26,7 @@ public class UserServlet extends HttpServlet {
         @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String action = request.getServletPath();
+            System.out.println(action);
             switch (action) {
                 case "/new":
                     showNewForm(request, response);

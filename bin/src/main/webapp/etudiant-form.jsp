@@ -6,14 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <html>
 <head>
-    <title>Etudiant Management Application</title>
+    <title>User Management Application</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
+
+
+
 <header>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: tomato">
         <div>
@@ -21,7 +23,7 @@
         </div>
 
         <ul class="navbar-nav">
-            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Etudiants</a></li>
+            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Users</a></li>
         </ul>
     </nav>
 </header>
@@ -39,10 +41,10 @@
                     <caption>
                         <h2>
                             <c:if test="${etudiant != null}">
-                                Edit User
+                                Edit Etudiant
                             </c:if>
                             <c:if test="${etudiant == null}">
-                                Add New User
+                                Add New Etudiant
                             </c:if>
                         </h2>
                     </caption>
@@ -52,15 +54,15 @@
                     </c:if>
 
                     <fieldset class="form-group">
-                        <label>User Name</label> <input type="text" value="<c:out value='${etudiant.name}' />" class="form-control" name="name" required="required">
+                        <label>Etudiant Name</label> <input type="text" value="<c:out value='${etudiant.name}' />" class="form-control" name="name" required="required">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label>User Email</label> <input type="text" value="<c:out value='${etudiant.email}' />" class="form-control" name="email">
+                        <label>Etudiant Email</label> <input type="text" value="<c:out value='${etudiant.email}' />" class="form-control" name="email">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label>User Country</label> <input type="text" value="<c:out value='${etudiant.note}' />" class="form-control" name="note">
+                        <label>Etudiant Note</label> <input type="text" value="<c:out value='${etudiant.note}' />" class="form-control" name="country">
                     </fieldset>
 
                     <button type="submit" class="btn btn-success">Save</button>
@@ -68,5 +70,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
