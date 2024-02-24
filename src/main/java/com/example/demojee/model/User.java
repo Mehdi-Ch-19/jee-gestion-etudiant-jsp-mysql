@@ -1,22 +1,22 @@
 package com.example.demojee.model;
 
-public class Etudiant {
+public class User {
     private int id;
     private String name;
     private  String email;
-    private double note ;
+    private String adresse ;
 
-    public Etudiant(int id, String name, String email, double note) {
+    public User(int id, String name, String email, String adresse) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.note = note;
+        this.adresse = adresse;
     }
 
-    public Etudiant(String name, String email, double note) {
+    public User(String name, String email, String adresse) {
         this.name = name;
         this.email = email;
-        this.note = note;
+        this.adresse = adresse;
     }
 
     public int getId() {
@@ -43,11 +43,11 @@ public class Etudiant {
         this.email = email;
     }
 
-    public double getNote() {
-        return note;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setNote(double note) {
-        this.note = note;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 }

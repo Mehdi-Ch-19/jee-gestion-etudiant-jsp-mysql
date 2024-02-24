@@ -17,11 +17,11 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: tomato">
         <div>
-            <a href="https://www.javaguides.net" class="navbar-brand"> Etudiant Management App </a>
+            <a href="https://www.javaguides.net" class="navbar-brand"> User Management App </a>
         </div>
 
         <ul class="navbar-nav">
-            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Etudiants</a></li>
+            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Users</a></li>
         </ul>
     </nav>
 </header>
@@ -31,11 +31,11 @@
     <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
     <div class="container">
-        <h3 class="text-center">List des Etudiants</h3>
+        <h3 class="text-center">List des Users</h3>
         <hr>
         <div class="container text-left">
 
-            <a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add New Etudiants</a>
+            <a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add New User</a>
         </div>
         <br>
         <table class="table table-bordered">
@@ -44,28 +44,28 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Note</th>
+                <th>Adresse</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <!--   for (Todo todo: todos) {  -->
-            <c:forEach var="etudiant" items="${listEtidiant}">
+            <c:forEach var="user" items="${listUsers}">
 
                 <tr>
                     <td>
-                        <c:out value="${etudiant.id}" />
+                        <c:out value="${user.id}" />
                     </td>
                     <td>
-                        <c:out value="${etudiant.name}" />
+                        <c:out value="${user.name}" />
                     </td>
                     <td>
-                        <c:out value="${etudiant.email}" />
+                        <c:out value="${user.email}" />
                     </td>
                     <td>
-                        <c:out value="${etudiant.note}" />
+                        <c:out value="${user.adresse}" />
                     </td>
-                    <td><a href="edit?id=<c:out value='${etudiant.id}' />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=<c:out value='${etudiant.id}' />">Delete</a></td>
+                    <td><a href="edit?id=<c:out value='${user.id}' />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=<c:out value='${user.id}' />">Delete</a></td>
                 </tr>
             </c:forEach>
             <!-- } -->

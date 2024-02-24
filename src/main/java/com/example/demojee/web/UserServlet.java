@@ -1,7 +1,7 @@
 package com.example.demojee.web;
 
-import com.example.demojee.dao.EtudiantDao;
-import com.example.demojee.model.Etudiant;
+import com.example.demojee.dao.UserDao;
+import com.example.demojee.model.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,10 +17,10 @@ import java.util.List;
 
 public class UserServlet extends HttpServlet {
     String destination = "user.jsp";
-    private EtudiantDao etudiantDao;
+    private UserDao userDao;
 
         public UserServlet() {
-            this.etudiantDao = new EtudiantDao();
+            this.userDao = new UserDao();
         }
 
         @Override
@@ -67,13 +67,13 @@ public class UserServlet extends HttpServlet {
     }
     private void listEtudiant(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Etudiant> listUser = etudiantDao.getAllEtudiants();
-        request.setAttribute("listEtidiant", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("etudiant-list.jsp");
+        List<User> listUser = userDao.getAllEtudiants();
+        request.setAttribute("listUsers", listUser);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
         dispatcher.forward(request, response);
     }
     private void showNewForm(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("etudiant-form.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("user-form.jsp");
             requestDispatcher.forward(request,response);
     }
 
@@ -81,9 +81,9 @@ public class UserServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        double note = Double.parseDouble(request.getParameter("note"));
-        Etudiant etudiant = new Etudiant(name,email,note);
-        etudiantDao.insertEtudiant(etudiant);
+        String adresse = request.getParameter("adresse");
+        User user = new User(name,email,adresse);
+        userDao.insertUser(user);
         response.sendRedirect("list");
 
     }
@@ -91,23 +91,23 @@ public class UserServlet extends HttpServlet {
         private void deleteEtudiant(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException {
 
             int id = Integer.parseInt(request.getParameter("id"));
-            etudiantDao.deleteEtudiant(id);
+            userDao.deleteEtudiant(id);
             response.sendRedirect("list");
         }
         private void showEditForm(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException {
             int id = Integer.parseInt(request.getParameter("id"));
-            Etudiant existEtudiant = etudiantDao.selectEtudaint(id);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("etudiant-form.jsp");
-            request.setAttribute("etudiant", existEtudiant);
+            User existUser = userDao.selectUser(id);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+            request.setAttribute("user", existUser);
             dispatcher.forward(request, response);
         }
     private void updateEtudiant(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException, SQLException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        double note = Double.parseDouble(request.getParameter("note"));
+        String adresse = request.getParameter("adresse");
         int id = Integer.parseInt(request.getParameter("id"));
-        Etudiant etudiant = new Etudiant(id,name,email,note);
-        etudiantDao.updateRtudiant(etudiant);
+        User user = new User(id,name,email,adresse);
+        userDao.updateRtudiant(user);
         response.sendRedirect("list");
 
     }

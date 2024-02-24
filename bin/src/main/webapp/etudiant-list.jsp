@@ -49,22 +49,22 @@
             </thead>
             <tbody>
             <!--   for (Todo todo: todos) {  -->
-            <c:forEach var="etudiant" items="${listEtidiant}">
+            <c:forEach var="user" items="${listEtidiant}">
 
                 <tr>
                     <td>
-                        <c:out value="${etudiant.id}" />
+                        <c:out value="${user.id}" />
                     </td>
                     <td>
-                        <c:out value="${etudiant.name}" />
+                        <c:out value="${user.name}" />
                     </td>
                     <td>
-                        <c:out value="${etudiant.email}" />
+                        <c:out value="${user.email}" />
                     </td>
                     <td>
-                        <c:out value="${etudiant.note}" />
+                        <c:out value="${user.note}" />
                     </td>
-                    <td><a href="edit?id=<c:out value='${etudiant.id}' />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=<c:out value='${etudiant.id}' />">Delete</a></td>
+                    <td><a href="edit?id=<c:out value='${user.id}' />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=<c:out value='${user.id}' />">Delete</a></td>
                 </tr>
             </c:forEach>
             <!-- } -->
