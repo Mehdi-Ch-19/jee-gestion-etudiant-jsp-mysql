@@ -13,13 +13,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "etudiantservlet", value = "/")
-
+@WebServlet(name = "UserServlet", value = "/")
 public class UserServlet extends HttpServlet {
-    String destination = "user.jsp";
     private UserDao userDao;
 
-        public UserServlet() {
+    public UserServlet() {
             this.userDao = new UserDao();
         }
 
@@ -33,27 +31,27 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "/insert":
                     try {
-                        insertEtudiant(request, response);
+                        insertUser(request, response);
                     }catch (SQLException e){
                         e.printStackTrace();
                     }
                     break;
                 case "/delete":
-                    deleteEtudiant(request, response);
+                    deleteUser(request, response);
                     break;
                 case "/edit":
                     showEditForm(request, response);
                     break;
                 case "/update":
                     try {
-                        updateEtudiant(request, response);
+                        updateUser(request, response);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
                     break;
                 default:
                     try {
-                        listEtudiant(request, response);
+                        listUser(request, response);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -65,7 +63,7 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doGet(req,resp);
     }
-    private void listEtudiant(HttpServletRequest request, HttpServletResponse response)
+    private void listUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<User> listUser = userDao.getAllEtudiants();
         request.setAttribute("listUsers", listUser);
@@ -77,7 +75,7 @@ public class UserServlet extends HttpServlet {
             requestDispatcher.forward(request,response);
     }
 
-    private void insertEtudiant(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException, SQLException {
+    private void insertUser(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException, SQLException {
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");
@@ -88,7 +86,7 @@ public class UserServlet extends HttpServlet {
 
     }
 
-        private void deleteEtudiant(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException {
+        private void deleteUser(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException {
 
             int id = Integer.parseInt(request.getParameter("id"));
             userDao.deleteEtudiant(id);
@@ -101,7 +99,7 @@ public class UserServlet extends HttpServlet {
             request.setAttribute("user", existUser);
             dispatcher.forward(request, response);
         }
-    private void updateEtudiant(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException, SQLException {
+    private void updateUser(HttpServletRequest request , HttpServletResponse response) throws ServletException, IOException, SQLException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String adresse = request.getParameter("adresse");
